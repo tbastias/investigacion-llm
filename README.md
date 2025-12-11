@@ -226,6 +226,70 @@ Ideal para:
 
 ---
 
+### Diferencias de costos entre entrenar un modelo localmente o usando OpenAI API
+
+#### 1) Costos de usar OpenAI API
+
+**Precios de uso de tokens (2025):**
+- GPT-5 nano (más barato): ~$0.05 por 1 M tokens de entrada y ~$0.40 por 1 M de salida.
+- Modelos más potentes: GPT-5 estándar puede costar ~$1.25 por 1 M de entrada y ~$10 por 1 M de salida. 
+OpenAI
+
+**Fine-tuning (entrenamiento con tus datos) también tiene precio:**
+- GPT-4.1 aprox. ~$25 por 1 M tokens de entrenamiento. 
+OpenAI
+
+**Ejemplo de costo de inferencia con API:**
+Si generás 1 millón de tokens totales al mes con un modelo intermedio → puede costar decenas a cientos de dólares al mes dependiendo de la variante y volumen.
+
+**Ventajas:**
+- No hay inversión inicial en hardware.
+- Costos directos claros por token.
+- Escala automáticamente.
+
+**Desventajas:**
+- A largo plazo con mucho volumen puede ser costoso.
+- Fine-tuning también se cobra por token de entrenamiento.
+
+#### 2) Costos de entrenar y servir localmente
+
+**Entrenamiento Local**
+
+Si querés customizar (fine-tune) un modelo localmente:
+**- Fine-tuning con LoRA/QLoRA:** 13B en un GPU potente (~A100 o similar) puede costar desde decenas a unos pocos cientos de dólares en tiempo de GPU (si lo hacés en la nube) o solo tiempo eléctrico si lo hacés on-premise. 
+TensorBlue
+
+_Entrenamiento desde cero en local no es viable para modelos grandes (costo de millones de dólares en infraestructura)._
+
+**Costo de hardware para inferencia**
+
+Para correr modelos localmente con buena capacidad (inferencias y fine-tuning):
+
+**Hardware típico:** 
+- GPU con 24 GB VRAM (ej. A6000 / RTX4090): ~$2,000–$4,000+ (solo GPU).
+- Servidor completo con CPU, PSU, RAM, almacenamiento → puede sumar $/servidor.
+
+**Costos operativos:**
+- Electricidad y mantenimiento (depende de tu consumo local).
+- Amortización del hardware (por ejemplo, ~2–3 años de uso).
+
+**Costo por inferencia local:**
+- En hardware propio, por tokens equivalentes ~ centavos por millón de tokens o menos. (Muy inferior al costo de API) 
+
+### Conclusión en cuanto a costos
+
+**Corto plazo / poco volumen / sin hardware propio:**
+- OpenAI API suele ser más barato y simple inicialmente.
+
+**Medio-largo plazo y/o gran volumen de uso:**
+- Servidor local puede ser significativamente más barato en costos operativos mensuales si ya tenés hardware o podés invertir. Después de recuperar el hardware (~1–3 años), el costo por token local puede ser 10× o más barato que la API. 
+Hakia
+
+**Fine-tuning**
+- Ejecutar local con LoRA/QLoRA en hardware propio normalmente sale mucho más económico que pagar a OpenAI por entrenamiento token a token si el volumen de entrenamiento es grande.
+
+---
+
 ### Conclusión General
 
 **¿Cuándo elegir cada opción?**
